@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bound to Fly Studios</title>
+  <meta name="description" content="Bound to Fly Studios is a software studio in Gothenburg, Sweden. Consultancy for clients. Products of our own.">
+  <link rel="canonical" href="https://boundtofly.se/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Bound to Fly Studios">
+  <meta property="og:description" content="Software studio in Gothenburg, Sweden. Consultancy for clients. Products of our own.">
+  <meta property="og:url" content="https://boundtofly.se/">
+  <meta property="og:image" content="https://boundtofly.se/assets/og.png">
+  <meta name="theme-color" content="#0b0f12">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600&family=Inter:wght@400;500&family=Cormorant+Garamond:ital,wght@1,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0b0f12;
+      --paper: #fafafa;
+      --muted-on-dark: #8d989e;
+      --muted-on-light: #6b767c;
+      --amber: #e0a96d;
+      --gutter: 24px;
+    }
+    * { box-sizing: border-box; }
+    html { height: 100%; height: 100svh; overflow: hidden; }
+    body { height: 100%; overflow: hidden; }
+    /* Chrome on iOS draws a locked document behind its address bar; there the document is left unlocked
+       (it is exactly the frame's height, so there is still nothing to scroll). Set by the script below. */
+    html.chrome-ios, html.chrome-ios body { overflow: visible; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: var(--ink);
+      color: var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* Sticky wordmark at the top of the frame, inverts over light and dark sections */
+    .brand {
+      position: sticky; top: 0; z-index: 10; height: 0; overflow: visible;
+      display: flex; justify-content: center; align-items: flex-start; padding: 0 var(--gutter);
+      pointer-events: none; mix-blend-mode: difference;
+    }
+    .brand a {
+      pointer-events: auto; margin-top: 22px;
+      font-family: Jost, Inter, sans-serif; font-weight: 600; font-size: 15px;
+      letter-spacing: 0.26em; text-transform: uppercase;
+      color: #fff;
+    }
+
+    /* The frame everything scrolls inside: exactly the visible area, so the browser bars never move */
+    .frame {
+      height: 100%; overflow-y: auto; overflow-x: hidden; overscroll-behavior: none;
+      scroll-snap-type: y mandatory; scroll-behavior: smooth; -webkit-overflow-scrolling: touch;
+      outline: none;
+    }
+
+    /* Full-viewport panels */
+    .panel, footer { scroll-snap-align: start; }
+    .panel {
+      min-height: 100%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 96px var(--gutter);
+    }
+    .panel.dark { background: var(--ink); color: var(--paper); }
+    .panel.light { background: var(--paper); color: var(--ink); }
+    .panel h1, .panel h2 {
+      font-family: Jost, Inter, sans-serif; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.16em; line-height: 1.15; margin: 0;
+      font-size: clamp(26px, 4.6vw, 52px);
+    }
+    .panel h1 { font-size: clamp(28px, 5.2vw, 60px); }
+    .panel p {
+      margin: 18px 0 0; font-size: 14px; max-width: 34em;
+    }
+    .panel.dark p { color: var(--muted-on-dark); }
+    .panel.light p { color: var(--muted-on-light); }
+    .panel .more {
+      margin-top: 28px; font-family: Jost, Inter, sans-serif; font-size: 12px; font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase; opacity: .7;
+    }
+    .panel .more:hover { opacity: 1; }
+
+    /* Quote panel */
+    .quote blockquote { margin: 0; }
+    .panel.light.quote p.verse {
+      margin: 0; font-family: "Cormorant Garamond", Georgia, serif; font-style: italic; font-weight: 500;
+      font-size: clamp(24px, 2.9vw, 38px); line-height: 1.35; color: var(--ink); max-width: 26em;
+    }
+    .quote cite {
+      display: block; margin-top: 32px; font-style: normal;
+      font-family: Jost, Inter, sans-serif; font-size: 11px; font-weight: 500; line-height: 2;
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted-on-light);
+    }
+
+    /* Footer: the third and last panel, dark again so the three alternate */
+    footer {
+      min-height: 100%; display: flex; flex-direction: column;
+      background: var(--ink); color: var(--paper); padding: 96px var(--gutter) 0; overflow: hidden;
+    }
+    .cols {
+      width: 100%; max-width: 1200px; margin: auto;
+      display: flex; justify-content: space-between; align-items: flex-start; gap: 48px;
+      font-family: Jost, Inter, sans-serif; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+      line-height: 2;
+    }
+    .cols h3 { margin: 0 0 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.18em; color: #fff; }
+    .cols div { color: var(--muted-on-dark); }
+    .cols a:hover { color: var(--amber); }
+    .cols .right { text-align: right; }
+    .giant {
+      margin: 96px auto -0.22em; max-width: 1200px;
+      font-family: Jost, Inter, sans-serif; font-weight: 600; line-height: 0.9;
+      font-size: clamp(64px, 15.5vw, 230px); letter-spacing: -0.02em; white-space: nowrap;
+      color: #fff; text-align: center;
+    }
+
+    @media (max-width: 720px) {
+      .brand a { font-size: 12px; letter-spacing: 0.22em; }
+      .panel { padding: 80px var(--gutter); }
+      footer { padding-top: 80px; }
+      .quote .verse br { display: none; }
+      .cols { flex-direction: column; justify-content: center; align-items: flex-start; gap: 24px; }
+      .cols .right { text-align: left; }
+      .giant { margin-top: 64px; font-size: 14.5vw; }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="frame" tabindex="-1">
+
+  <div class="brand"><a href="/">Bound to Fly</a></div>
+
+  <section class="panel dark">
+    <h1>Bound by constraints.<br>Built to fly.</h1>
+    <p>Bound to Fly Studios is a software studio in Gothenburg, Sweden. Consultancy for clients. Products of our own.</p>
+    <a class="more" href="#contact">Contact</a>
+  </section>
+
+  <section class="panel light quote">
+    <blockquote>
+      <p class="verse">Unbound spirits strive in vain for the heights. <br>Whoever wants great things must control themselves; <br>only in limitation is the master revealed, <br>and only the rule can set us free.</p>
+      <cite>Johann Wolfgang von Goethe, Natur und Kunst, 1800</cite>
+    </blockquote>
+  </section>
+
+  <footer id="contact">
+    <div class="cols">
+      <div>
+        <h3>Contact</h3>
+        <a href="mailto:hello@boundtofly.se">hello@boundtofly.se</a>
+      </div>
+      <div>
+        <h3>Location</h3>
+        Gothenburg, Sweden
+      </div>
+      <div class="right">
+        <h3>Company</h3>
+        Bound to Fly Studios AB<br>
+        Registered in Mölndal, Sweden<br>
+        Reg. no. 559604-9360
+      </div>
+    </div>
+    <div class="giant">Bound to Fly</div>
+  </footer>
+
+  </main>
+
+  <script>
+    // Tint the browser bars after the panel in the middle of the frame (theme-color for most browsers,
+    // the page background for Safari 26, which derives its bar tint from that).
+    (function () {
+      if (/CriOS/.test(navigator.userAgent)) document.documentElement.classList.add('chrome-ios');
+      var meta = document.querySelector('meta[name="theme-color"]');
+      var frame = document.querySelector('.frame');
+      var panels = [].slice.call(document.querySelectorAll('.panel, footer'));
+      if (!meta || !frame || !panels.length) return;
+      var colors = panels.map(function (p) { return getComputedStyle(p).backgroundColor; });
+      function update() {
+        var y = frame.scrollTop + frame.clientHeight / 2;
+        for (var i = panels.length - 1; i >= 0; i--) {
+          if (panels[i].offsetTop <= y) {
+            meta.content = colors[i];
+            // Safari 26 tints its bars from the page background rather than theme-color
+            document.documentElement.style.background = colors[i];
+            document.body.style.background = colors[i];
+            return;
+          }
+        }
+      }
+      frame.addEventListener('scroll', update, { passive: true });
+      update();
+      frame.focus({ preventScroll: true }); // so arrow keys and space scroll the frame
+    })();
+  </script>
+
+</body>
+</html>
